@@ -1,7 +1,6 @@
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -40,7 +39,9 @@ function Login(props) {
           }, 1500);
         }
       });
-    setShow(true);
+      setTimeout(() => {
+        setShow(true);
+      }, 800);
     setTimeout(() => {
       setShow(false);
     }, 1500);
@@ -101,9 +102,9 @@ function Login(props) {
             </Button>
             <Grid container>
               <Grid item>
-                <Link href="/register" variant="body2">
-                  Belum punya Akun? Daftar
-                </Link>
+              <Button onClick={() => navigate('/register')} variant="text">
+                Belum Punya Akun? Daftar
+              </Button>
               </Grid>
             </Grid>
           </Box>

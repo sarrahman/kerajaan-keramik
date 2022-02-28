@@ -18,7 +18,9 @@ export const getOngkirApi = (data) => (dispatch) => {
       cabang = "-0.482450, 117.163399";
     } else if (cabang === "sambutan") {
       cabang = "-0.507769, 117.168949";
-    } else {
+    } else if(cabang === 'sebrang'){
+      cabang = "-0.516372, 117.124765";
+    }else{
       cabang = "-0.476863, 117.165573";
     }
 
