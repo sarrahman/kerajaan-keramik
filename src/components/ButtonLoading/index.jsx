@@ -22,7 +22,7 @@ const ButtonLoading = (props) => {
         variant="contained"
         color="primary"
       >
-        Cek Ongkir
+        {props.title}
       </Button>
     );
   }

@@ -131,7 +131,7 @@ export default function FormOngkir(props) {
           />
         </Grid>
       </Grid>
-      <ButtonLoading statusLoading={props.isLoading} onClick={handleClick} />
+      <ButtonLoading statusLoading={props.isLoading} title="Cek Ongkir" onClick={handleClick} />
     </React.Fragment>
   );
 }

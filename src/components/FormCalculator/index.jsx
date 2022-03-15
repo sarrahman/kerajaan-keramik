@@ -141,7 +141,7 @@ export default function FormCalculator(props) {
           />
         </Grid>
       </Grid>
-      <ButtonLoading statusLoading={props.isLoading} onClick={handleClick} />
+      <ButtonLoading statusLoading={props.isLoading} title="Menghitung" onClick={handleClick} />
     </React.Fragment>
   );
 }
