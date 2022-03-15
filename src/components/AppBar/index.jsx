@@ -15,7 +15,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { connect } from "react-redux";
 import { logoutApi } from "../../redux/actions/auth";
 
-const pages = ["Home", "Harga", "Kalkulator"];
+const pages = ["Home", "Ongkir", "Kalkulator"];
 const settings = ["Logout"];
 
 const AppBarComp = (props) => {

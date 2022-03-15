@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Copyright from "../../../components/Footer";
 
-const Home = (props) => {
+const Ongkir = (props) => {
   const navigate = useNavigate();
   const [data, setData] = useState("");
   const [tujuan, setTujuan] = useState("");
@@ -76,4 +76,4 @@ const reduxAction = (dispatch) => ({
   getOngkir: (data) => dispatch(getOngkirApi(data)),
 });
 
-export default connect(reduxState, reduxAction)(Home);
+export default connect(reduxState, reduxAction)(Ongkir);

@@ -5,7 +5,7 @@ const AlertComp = (props) => {
     return (
       <Alert severity="success">
         <AlertTitle>Success</AlertTitle>
-        Welcome ! <strong>Kamu Berhasil Masuk</strong>
+        {props.text}
       </Alert>
     );
   }
@@ -13,7 +13,7 @@ const AlertComp = (props) => {
   return (
     <Alert severity="error">
       <AlertTitle>Error</AlertTitle>
-      Maaf ya ! <strong>Kamu Gagal Masuk</strong>
+      {props.text}
     </Alert>
   );
 };

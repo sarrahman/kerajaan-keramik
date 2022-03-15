@@ -18,7 +18,7 @@ import Logo from "../../../assets/logo.png";
 const theme = createTheme();
 
 function Login(props) {
-  const [show, setShow] = useState(false);
+  const [message, setMessage] = useState("");
   const [status, setStatus] = useState(false);
   const navigate = useNavigate();
 
@@ -32,19 +32,17 @@ function Login(props) {
       })
       .then((res) => {
         if (res.status === 200) {
+          setMessage(res.data.message);
           setStatus(true);
-          setShow(true);
           setTimeout(() => {
-            navigate("/");
-          }, 1500);
+            navigate("/login");
+          }, 1000);
         }
+      })
+      .catch((err) => {
+        setStatus(false);
+        setMessage(err.response.data.message);
       });
-      setTimeout(() => {
-        setShow(true);
-      }, 800);
-    setTimeout(() => {
-      setShow(false);
-    }, 1500);
   };
 
   return (
@@ -59,12 +57,12 @@ function Login(props) {
             alignItems: "center",
           }}
         >
-          <img src={Logo} style={{width: '120px'}} alt="logo" />
+          <img src={Logo} style={{ width: "120px" }} alt="logo" />
           <Typography component="h1" variant="h5">
             Masuk
           </Typography>
-          <Collapse in={show}>
-            <AlertComp status={status} />
+          <Collapse in={message !== ""}>
+            <AlertComp status={status} text={message} />
           </Collapse>
           <Box
             component="form"
@@ -102,9 +100,9 @@ function Login(props) {
             </Button>
             <Grid container>
               <Grid item>
-              <Button onClick={() => navigate('/register')} variant="text">
-                Belum Punya Akun? Daftar
-              </Button>
+                <Button onClick={() => navigate("/register")} variant="text">
+                  Belum Punya Akun? Daftar
+                </Button>
               </Grid>
             </Grid>
           </Box>
