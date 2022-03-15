@@ -4,7 +4,6 @@ import Login from "../pages/Login";
 import Home from "../pages/Home";
 import Harga from "../pages/Harga";
 import Kalkulator from "../pages/Kalkulator";
-// import Repair from "../pages/Repair";
 import NotFound from "../pages/NotFound";
 
 function App() {
