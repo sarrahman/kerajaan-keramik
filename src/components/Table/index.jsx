@@ -29,6 +29,9 @@ function TableComp(props) {
   const subHeaderComponentMemo = React.useMemo(() => {
     return (
       <TextField
+      sx={{
+        width: "50%",
+      }}
         label="Pencarian"
         onChange={(e) => setFilterText(e.target.value)}
         InputProps={{
