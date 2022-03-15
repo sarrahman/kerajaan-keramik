@@ -32,6 +32,7 @@ export const LoginApi = (data) => (dispatch) => {
           value: true,
         });
         window.localStorage.setItem("AUTH", response.status);
+        window.localStorage.setItem("ADMIN", response.data.admin);
         resolve(response);
       })
       .catch((error) => {
@@ -50,4 +51,5 @@ export const logoutApi = () => (dispatch) => {
       value: false,
     });
     window.localStorage.removeItem("AUTH");
+    window.localStorage.removeItem("ADMIN");
 };

@@ -1,21 +1,32 @@
-import { Box } from "@mui/material";
-import AppBarComp from "../../../components/AppBar";
-import TableComp from "../../../components/Table";
+import { Box ,Button } from "@mui/material";
+import AppBarComp from "../../../../components/AppBar";
+import TableAdmin from "../../../../components/Table/admin/Table";
 import { connect } from "react-redux";
-import { getProductsApi } from "../../../redux/actions/products/index.js";
+import { getProductsApi } from "../../../../redux/actions/products/index.js";
 import { useEffect, useState } from "react";
-import Copyright from "../../../components/Footer";
 
-const Harga = (props) => {
+const HargaAdmin = (props) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     props.getDataProducts().then((res) => setData(res));
   }, [props]);
-  
+
   return (
     <div>
       <AppBarComp title="kerajaan keramik" />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          mr: { xs: 1, md: 3 },
+          mt: { xs: 1, md: 3 },
+        }}
+      >
+        <Button variant="contained" color="primary">
+            Produk Baru
+        </Button>
+      </Box>
       <Box
         sx={{
           display: "flex",
@@ -26,9 +37,8 @@ const Harga = (props) => {
           borderRadius: "10px",
         }}
       >
-        <TableComp data={data} />
+        <TableAdmin data={data} />
       </Box>
-      <Copyright />
     </div>
   );
 };
@@ -41,4 +51,4 @@ const reduxAction = (dispatch) => ({
   getDataProducts: () => dispatch(getProductsApi()),
 });
 
-export default connect(reduxState, reduxAction)(Harga);
+export default connect(reduxState, reduxAction)(HargaAdmin);
