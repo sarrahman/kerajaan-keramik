@@ -35,7 +35,7 @@ function Login(props) {
           setMessage(res.data.message);
           setStatus(true);
           setTimeout(() => {
-            navigate("/login");
+            navigate("/");
           }, 1000);
         }
       })
