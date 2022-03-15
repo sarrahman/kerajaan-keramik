@@ -11,7 +11,7 @@ const Harga = (props) => {
   useEffect(() => {
     props.getDataProducts().then((res) => setData(res));
   }, [props]);
-
+  
   return (
     <div>
       <AppBarComp title="kerajaan keramik" />

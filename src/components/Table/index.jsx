@@ -14,34 +14,23 @@ const columns = [
   {
     name: "Harga",
     selector: (row) => row.harga,
-    format: (value) => `Rp. ${value.toLocaleString()}`,
+    format: (value) => `Rp. ${value.harga}`,
   },
 ];
 
 function TableComp(props) {
   const [filterText, setFilterText] = React.useState("");
-  const [resetPaginationToggle, setResetPaginationToggle] =
-    React.useState(false);
+  React.useState(false);
   const filteredItems = props.data.filter(
     (item) =>
-      item.name && item.name.toLowerCase().includes(filterText.toLowerCase())
+      item.nama && item.nama.toLowerCase().includes(filterText.toLowerCase())
   );
 
   const subHeaderComponentMemo = React.useMemo(() => {
-    const handleClear = () => {
-      if (filterText) {
-        setResetPaginationToggle(!resetPaginationToggle);
-        setFilterText("");
-      }
-    };
-
     return (
       <TextField
-        id="input-with-icon-textfield"
-        onFilter={(e) => setFilterText(e.target.value)}
-        onClear={handleClear}
-        filterText={filterText}
         label="Pencarian"
+        onChange={(e) => setFilterText(e.target.value)}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -52,7 +41,7 @@ function TableComp(props) {
         variant="standard"
       />
     );
-  }, [filterText, resetPaginationToggle]);
+  }, []);
 
   return (
     <DataTable
@@ -60,7 +49,6 @@ function TableComp(props) {
       columns={columns}
       data={filteredItems}
       pagination
-      paginationResetDefaultPage={resetPaginationToggle}
       subHeader
       subHeaderComponent={subHeaderComponentMemo}
       selectableRows
