@@ -4,7 +4,7 @@ import Login from "../pages/Login";
 import Ongkir from "../pages/Ongkir";
 import Kalkulator from "../pages/Kalkulator";
 import NotFound from "../pages/NotFound";
-import HargaAdmin from "../pages/admin/Harga";
+import HargaAdmin from "../pages/Harga/admin/harga";
 import Harga from "../pages/Harga";
 
 const isAdmin = window.localStorage.getItem("ADMIN") === "true";
