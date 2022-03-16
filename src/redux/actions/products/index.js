@@ -20,7 +20,7 @@ export const getProductByIdApi = (id) => (dispatch) => {
         `https://backend-kerajaan-keramik.herokuapp.com/api/v1/product/${id}`
       )
       .then((res) => {
-        resolve(res.data);
+        resolve(res);
       });
   });
 };
@@ -37,20 +37,24 @@ export const addProductApi = (product) => (dispatch) => {
       })
       .catch((err) => {
         reject(err);
-      }
-      );
+      });
   });
 };
 
-export const updateProductApi = (product) => (dispatch) => {
+export const updateProductApi = (product, id) => (dispatch) => {
   return new Promise((resolve, reject) => {
+    console.log(product, id);
     axios
-      .put(
-        `https://backend-kerajaan-keramik.herokuapp.com/api/v1/product/${product.id}`,
+      .patch(
+        // `https://backend-kerajaan-keramik.herokuapp.com/api/v1/product/${product.id}`,
+        `http://localhost:8080/api/v1/product/${id}`,
         product
       )
       .then((res) => {
-        resolve(res.data);
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
       });
   });
 };

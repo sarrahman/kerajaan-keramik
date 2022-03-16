@@ -54,7 +54,6 @@ function TableComp(props) {
       pagination
       subHeader
       subHeaderComponent={subHeaderComponentMemo}
-      selectableRows
       persistTableHead
     />
   );

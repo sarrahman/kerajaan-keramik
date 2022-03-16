@@ -1,17 +1,25 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ButtonLoading from "../ButtonLoading";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 
 export default function FormOngkir(props) {
   const [value, setValue] = useState({
-    nama: "",
-    harga: null,
+    nama: '',
+    harga: '',
     isPromo: false,
   });
+
+  useEffect(() => {
+    setValue({
+      nama: props.nama,
+      harga: props.harga,
+      isPromo: props.isPromo,
+    });
+  }, [props]);
 
   const handleClick = () => {
     props.onSubmit(value);
@@ -38,6 +46,7 @@ export default function FormOngkir(props) {
             }}
             id="nama"
             name="nama"
+            value={value.nama}
             label="Nama Product"
             fullWidth
             variant="outlined"
@@ -54,6 +63,7 @@ export default function FormOngkir(props) {
             required
             id="harga"
             name="harga"
+            value={value.harga}
             label="Harga"
             type="number"
             fullWidth
@@ -62,7 +72,7 @@ export default function FormOngkir(props) {
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
-            control={<Switch onChange={handleChange} />}
+            control={<Switch checked={value.isPromo} onChange={handleChange} />}
             label="Promo"
           />
         </Grid>
