@@ -32,7 +32,7 @@ const EditHarga = (props) => {
           isPromo: res.data.isPromo,
         })
       )
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.response.data.message));
   }, [id, props]);
 
   const handleSubmit = (product) => {

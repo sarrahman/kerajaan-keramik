@@ -21,6 +21,9 @@ export const getProductByIdApi = (id) => (dispatch) => {
       )
       .then((res) => {
         resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
       });
   });
 };
@@ -43,11 +46,9 @@ export const addProductApi = (product) => (dispatch) => {
 
 export const updateProductApi = (product, id) => (dispatch) => {
   return new Promise((resolve, reject) => {
-    console.log(product, id);
     axios
       .patch(
-        // `https://backend-kerajaan-keramik.herokuapp.com/api/v1/product/${product.id}`,
-        `http://localhost:8080/api/v1/product/${id}`,
+        `https://backend-kerajaan-keramik.herokuapp.com/api/v1/product/${id}`,
         product
       )
       .then((res) => {
