@@ -28,7 +28,7 @@ const HargaAdmin = (props) => {
           mt: { xs: 1, md: 3 },
         }}
       >
-        <Button variant="contained" color="primary">
+        <Button variant="contained" onClick={() => navigate("/product")} color="primary">
             Produk Baru
         </Button>
       </Box>

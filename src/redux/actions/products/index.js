@@ -6,6 +6,9 @@ export const getProductsApi = () => (dispatch) => {
       .get("https://backend-kerajaan-keramik.herokuapp.com/api/v1/products")
       .then((res) => {
         resolve(res.data);
+      })
+      .catch((err) => {
+        reject(err);
       });
   });
 };
@@ -30,8 +33,12 @@ export const addProductApi = (product) => (dispatch) => {
         product
       )
       .then((res) => {
-        resolve(res.data);
-      });
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      }
+      );
   });
 };
 

@@ -3,46 +3,48 @@ import React from "react";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import Button from "@mui/material/Button";
-import DeleteIcon from '@mui/icons-material/Delete';
-
-const columns = [
-  {
-    name: "Nama",
-    selector: (row) => row.nama,
-    sortable: true,
-    width: "50%",
-  },
-  {
-    name: "Harga",
-    selector: (row) => row.harga,
-    format: (value) => `Rp. ${value.harga}`,
-    width: "20%",
-  },
-  {
-    name: "",
-    width: '20%',
-    cell: (row) => (
-      <>
-        <Button
-          onClick={() => console.log(row)}
-          size="small"
-          color="primary"
-          sx={{ mr: 1 }}
-        >
-          <ModeEditIcon />
-        </Button>
-        <Button onClick={() => console.log(row)} size="small" color="primary">
-          <DeleteIcon />
-        </Button>
-      </>
-    ),
-  },
-];
+import DeleteIcon from "@mui/icons-material/Delete";
+import { useNavigate } from "react-router-dom";
 
 function TableAdmin(props) {
+  const navigate = useNavigate();
   const [filterText, setFilterText] = React.useState("");
+
+  const columns = [
+    {
+      name: "Nama",
+      selector: (row) => row.nama,
+      sortable: true,
+      width: "50%",
+    },
+    {
+      name: "Harga",
+      selector: (row) => row.harga,
+      format: (value) => `Rp. ${value.harga}`,
+    },
+    {
+      name: "",
+      width: "10%",
+      cell: (row) => (
+        <>
+          <Button
+            onClick={() => navigate(`/edit/${row._id}`)}
+            size="small"
+            color="primary"
+            sx={{ mr: 1 }}
+          >
+            <ModeEditIcon />
+          </Button>
+          <Button onClick={() => console.log(row)} size="small" color="primary">
+            <DeleteIcon />
+          </Button>
+        </>
+      ),
+    },
+  ];
+
   React.useState(false);
   const filteredItems = props.data.filter(
     (item) =>
@@ -53,7 +55,7 @@ function TableAdmin(props) {
     return (
       <TextField
         sx={{
-          width: "50%",
+          width: {xs: '50%', md: '30%'},
         }}
         label="Pencarian"
         onChange={(e) => setFilterText(e.target.value)}
@@ -77,7 +79,6 @@ function TableAdmin(props) {
       pagination
       subHeader
       subHeaderComponent={subHeaderComponentMemo}
-      selectableRows
       persistTableHead
     />
   );

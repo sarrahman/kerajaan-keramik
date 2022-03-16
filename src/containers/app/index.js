@@ -6,6 +6,8 @@ import Kalkulator from "../pages/Kalkulator";
 import NotFound from "../pages/NotFound";
 import HargaAdmin from "../pages/Harga/admin/harga";
 import Harga from "../pages/Harga";
+import FormHarga from "../pages/FormHarga";
+import EditHarga from "../pages/FormHarga/Edit";
 
 const isAdmin = window.localStorage.getItem("ADMIN") === "true";
 
@@ -14,6 +16,8 @@ function App() {;
     <BrowserRouter>
       <Routes>
         <Route path="/" index element={isAdmin ? <HargaAdmin /> : <Harga />} />
+        <Route path="/product" element={<FormHarga />} />
+        <Route path="/edit/:id" element={<EditHarga />} />
         <Route path="/home" element={<Navigate to="/" />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
