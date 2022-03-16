@@ -6,17 +6,26 @@ import Harga from "../pages/Harga";
 import Kalkulator from "../pages/Kalkulator";
 import NotFound from "../pages/NotFound";
 import HargaAdmin from "../pages/Harga/admin/harga";
+import { connect } from "react-redux";
+import { checkIsAdmin } from "../../redux/actions/auth";
+import { useEffect } from "react";
+import Store from "../../redux/store";
 
-const isAdmin = window.localStorage.getItem("ADMIN");
+const state =  Store.getState();
 
-function App() {
+function App(props) {
+
+  useEffect(() => {
+    props.checkIsAdmin();
+  }, [props])
+
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path="/"
           index
-          element={isAdmin === true ? <HargaAdmin /> : <Harga />}
+          element={state.isAdmin ? <Harga /> : <HargaAdmin />}
         />
         <Route path="/home" element={<Navigate to="/" />} />
         <Route path="/register" element={<Register />} />
@@ -29,4 +38,12 @@ function App() {
   );
 }
 
-export default App;
+const reduxState = (state) => ({
+  isLogin: state.isLogin,
+});
+
+const reduxAction = (dispatch) => ({
+  checkIsAdmin: () => dispatch(checkIsAdmin()),
+});
+
+export default connect(reduxState, reduxAction)(App);

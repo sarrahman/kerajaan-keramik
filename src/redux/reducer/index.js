@@ -17,6 +17,12 @@ const reducer = (state = initialState, action) => {
       isLoading: action.value,
     };
   }
+  if(action.type === "ADMIN"){
+    return {
+      ...state,
+      isAdmin: action.value,
+    }
+  }
   return state;
 };
 
