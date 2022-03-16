@@ -2,31 +2,15 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Ongkir from "../pages/Ongkir";
-import Harga from "../pages/Harga";
 import Kalkulator from "../pages/Kalkulator";
 import NotFound from "../pages/NotFound";
-import HargaAdmin from "../pages/Harga/admin/harga";
-import { connect } from "react-redux";
-import { checkIsAdmin } from "../../redux/actions/auth";
-import { useEffect } from "react";
-import Store from "../../redux/store";
+import Home from "../pages/Home";
 
-const state =  Store.getState();
-
-function App(props) {
-
-  useEffect(() => {
-    props.checkIsAdmin();
-  }, [props])
-
+function App() {;
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          index
-          element={state.isAdmin ? <Harga /> : <HargaAdmin />}
-        />
+        <Route path="/" index element={<Home />} />
         <Route path="/home" element={<Navigate to="/" />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
@@ -38,12 +22,4 @@ function App(props) {
   );
 }
 
-const reduxState = (state) => ({
-  isLogin: state.isLogin,
-});
-
-const reduxAction = (dispatch) => ({
-  checkIsAdmin: () => dispatch(checkIsAdmin()),
-});
-
-export default connect(reduxState, reduxAction)(App);
+export default App;

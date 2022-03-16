@@ -1,6 +1,6 @@
 const initialState = {
   isLogin: false || window.localStorage.getItem("AUTH"),
-  isAdmin: true,
+  isAdmin: window.localStorage.getItem("ADMIN"),
   isLoading: false,
 };
 

@@ -36,6 +36,10 @@ export const LoginApi = (data) => (dispatch) => {
           type: "LOGIN",
           value: true,
         });
+        dispatch({
+          type: "ADMIN",
+          value: response.data.admin,
+        });
         window.localStorage.setItem("AUTH", response.data.id);
         window.localStorage.setItem("ADMIN", response.data.admin);
         resolve(response);
@@ -57,27 +61,4 @@ export const logoutApi = () => (dispatch) => {
   });
   window.localStorage.removeItem("AUTH");
   window.localStorage.removeItem("ADMIN");
-};
-
-export const checkIsAdmin = () => (dispatch) => {
-  return new Promise((resolve, reject) => {
-    const id = window.localStorage.getItem("AUTH");
-    axios
-      .get("https://backend-kerajaan-keramik.herokuapp.com/api/v1/users")
-      .then((response) => {
-        // eslint-disable-next-line array-callback-return
-        response.data.data.map((item) => {
-          if (item.id === id) {
-            dispatch({
-              type: "ADMIN",
-              value: item.admin,
-            });
-            return console.log("welcome admin");
-          }
-        });
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  });
 };
