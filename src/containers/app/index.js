@@ -4,13 +4,16 @@ import Login from "../pages/Login";
 import Ongkir from "../pages/Ongkir";
 import Kalkulator from "../pages/Kalkulator";
 import NotFound from "../pages/NotFound";
-import Home from "../pages/Home";
+import HargaAdmin from "../pages/admin/Harga";
+import Harga from "../pages/Harga";
+
+const isAdmin = window.localStorage.getItem("ADMIN") === "true";
 
 function App() {;
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" index element={<Home />} />
+        <Route path="/" index element={isAdmin ? <HargaAdmin /> : <Harga />} />
         <Route path="/home" element={<Navigate to="/" />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
