@@ -78,7 +78,7 @@ function Register(props) {
                   required
                   fullWidth
                   id="username"
-                  label="username Address"
+                  label="username"
                   name="username"
                   autoComplete="username"
                 />
@@ -99,7 +99,7 @@ function Register(props) {
                   required
                   fullWidth
                   name="confirmPassword"
-                  label="confirmPassword"
+                  label="confirm Password"
                   type="password"
                   id="confirmPassword"
                   autoComplete="new-password"
