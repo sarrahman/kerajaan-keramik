@@ -5,13 +5,18 @@ import { connect } from "react-redux";
 import { getProductsApi } from "../../../redux/actions/products/index.js";
 import { useEffect, useState } from "react";
 import Copyright from "../../../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Harga = (props) => {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    if (!props.isLogin) {
+      navigate("/login");
+    }
     props.getDataProducts().then((res) => setData(res));
-  }, [props]);
+  }, [navigate, props]);
   
   return (
     <div>
