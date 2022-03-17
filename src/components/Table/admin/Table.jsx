@@ -4,7 +4,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import {Button, Collapse} from "@mui/material";
+import { Button, Collapse } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
@@ -23,6 +23,9 @@ function TableAdmin(props) {
       .then((res) => {
         setMessage(res.message);
         setStatus(true);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       })
       .catch((err) => {
         setStatus(false);
