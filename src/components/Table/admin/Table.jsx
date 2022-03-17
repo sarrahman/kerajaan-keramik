@@ -4,13 +4,31 @@ import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import Button from "@mui/material/Button";
+import {Button, Collapse} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
+import { deleteProductApi } from "../../../redux/actions/products";
+import AlertComp from "../../Alert";
 
 function TableAdmin(props) {
-  const navigate = useNavigate();
+  const navigate = useNavigate(props);
   const [filterText, setFilterText] = React.useState("");
+  const [message, setMessage] = React.useState("");
+  const [status, setStatus] = React.useState(false);
+
+  const handleRemove = (id) => {
+    props
+      .removeData(id)
+      .then((res) => {
+        setMessage(res.message);
+        setStatus(true);
+      })
+      .catch((err) => {
+        setStatus(false);
+        setMessage(err.response.data.message);
+      });
+  };
 
   const columns = [
     {
@@ -37,7 +55,11 @@ function TableAdmin(props) {
           >
             <ModeEditIcon />
           </Button>
-          <Button onClick={() => console.log(row)} size="small" color="primary">
+          <Button
+            onClick={() => handleRemove(row._id)}
+            size="small"
+            color="primary"
+          >
             <DeleteIcon />
           </Button>
         </>
@@ -55,7 +77,7 @@ function TableAdmin(props) {
     return (
       <TextField
         sx={{
-          width: {xs: '50%', md: '30%'},
+          width: { xs: "50%", md: "30%" },
         }}
         label="Pencarian"
         onChange={(e) => setFilterText(e.target.value)}
@@ -72,16 +94,25 @@ function TableAdmin(props) {
   }, []);
 
   return (
-    <DataTable
-      title="Daftar Produk"
-      columns={columns}
-      data={filteredItems}
-      pagination
-      subHeader
-      subHeaderComponent={subHeaderComponentMemo}
-      persistTableHead
-    />
+    <>
+      <Collapse sx={{ mt: 1, mb: 2 }} in={message !== ""}>
+        <AlertComp status={status} text={message} />
+      </Collapse>
+      <DataTable
+        title="Daftar Produk"
+        columns={columns}
+        data={filteredItems}
+        pagination
+        subHeader
+        subHeaderComponent={subHeaderComponentMemo}
+        persistTableHead
+      />
+    </>
   );
 }
 
-export default TableAdmin;
+const reduxAction = (dispatch) => ({
+  removeData: (id) => dispatch(deleteProductApi(id)),
+});
+
+export default connect(null, reduxAction)(TableAdmin);
