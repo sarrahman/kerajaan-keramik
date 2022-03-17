@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { getProductsApi } from "../../../../redux/actions/products/index.js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../../../components/Footer";
+import AddIcon from '@mui/icons-material/Add';
 
 const HargaAdmin = (props) => {
   const navigate = useNavigate();
@@ -29,7 +31,7 @@ const HargaAdmin = (props) => {
         }}
       >
         <Button variant="contained" onClick={() => navigate("/product")} color="primary">
-            Produk Baru
+            <AddIcon /> Produk Baru
         </Button>
       </Box>
       <Box
@@ -44,6 +46,7 @@ const HargaAdmin = (props) => {
       >
         <TableAdmin data={data} />
       </Box>
+      <Footer />
     </div>
   );
 };

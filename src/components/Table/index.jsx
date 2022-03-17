@@ -3,6 +3,7 @@ import React from "react";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
+import NumberFormat from "react-number-format";
 
 const columns = [
   {
@@ -14,7 +15,14 @@ const columns = [
   {
     name: "Harga",
     selector: (row) => row.harga,
-    format: (value) => `Rp. ${value.harga}`,
+    format: (value) => (
+      <NumberFormat
+        value={value.harga}
+        displayType={"text"}
+        thousandSeparator={true}
+        prefix={"Rp "}
+      />
+    )
   },
 ];
 

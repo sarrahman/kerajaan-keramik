@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { deleteProductApi } from "../../../redux/actions/products";
 import AlertComp from "../../Alert";
+import NumberFormat from "react-number-format";
 
 function TableAdmin(props) {
   const navigate = useNavigate(props);
@@ -43,7 +44,14 @@ function TableAdmin(props) {
     {
       name: "Harga",
       selector: (row) => row.harga,
-      format: (value) => `Rp. ${value.harga}`,
+      format: (value) => (
+        <NumberFormat
+          value={value.harga}
+          displayType={"text"}
+          thousandSeparator={true}
+          prefix={"Rp "}
+        />
+      ),
     },
     {
       name: "",
