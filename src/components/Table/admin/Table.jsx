@@ -4,7 +4,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import { Button, Collapse } from "@mui/material";
+import { Button, Chip, Collapse } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
@@ -52,6 +52,17 @@ function TableAdmin(props) {
           prefix={"Rp "}
         />
       ),
+    },
+    {
+      name: "Promo",
+      selector: (row) => row.isPromo,
+      format: (value) => {
+        if (value.isPromo === true) {
+          return <Chip label="Ya" variant="outlined" color="primary" />
+        } else {
+          return <Chip label="Tidak" variant="outlined" />
+        }
+      },
     },
     {
       name: "",

@@ -4,6 +4,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import NumberFormat from "react-number-format";
+import { Chip } from "@mui/material";
 
 const columns = [
   {
@@ -22,7 +23,18 @@ const columns = [
         thousandSeparator={true}
         prefix={"Rp "}
       />
-    )
+    ),
+  },
+  {
+    name: "Promo",
+    selector: (row) => row.isPromo,
+    format: (value) => {
+      if (value.isPromo === true) {
+        return <Chip label="Ya" variant="outlined" color="primary" />
+      } else {
+        return <Chip label="Tidak" variant="outlined" />
+      }
+    },
   },
 ];
 
@@ -37,9 +49,9 @@ function TableComp(props) {
   const subHeaderComponentMemo = React.useMemo(() => {
     return (
       <TextField
-      sx={{
-        width: "50%",
-      }}
+        sx={{
+          width: "50%",
+        }}
         label="Pencarian"
         onChange={(e) => setFilterText(e.target.value)}
         InputProps={{
