@@ -22,12 +22,12 @@ const HargaAdmin = (props) => {
   return (
     <div>
       <AppBarComp title="kerajaan keramik" />
-    <Alert sx={{
-    m: 2
-    }} severity="warning">
-  <AlertTitle>Warning</AlertTitle>
-  Reminder Upgrade now! Heroku free product plans end November 28th — <strong>salesforce team</strong>
-</Alert>
+//     <Alert sx={{
+//     m: 2
+//     }} severity="warning">
+//   <AlertTitle>Warning</AlertTitle>
+//   Reminder Upgrade now! Heroku free product plans end November 28th — <strong>salesforce team</strong>
+// </Alert>
       <Box
         sx={{
           display: "flex",
