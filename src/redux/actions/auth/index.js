@@ -4,7 +4,7 @@ export const RegisterApi = (data) => (dispatch) => {
   return new Promise((resolve, reject) => {
     axios
       .post(
-        "https://backend-kerajaan-keramik.herokuapp.com/api/auth/register",
+        "https://backend-kerajaan-keramik.vercel.app/api/auth/register",
         data
       )
       .then((response) => {
@@ -28,7 +28,7 @@ export const LoginApi = (data) => (dispatch) => {
   return new Promise((resolve, reject) => {
     axios
       .post(
-        "https://backend-kerajaan-keramik.herokuapp.com/api/auth/login",
+        "https://backend-kerajaan-keramik.vercel.app/api/auth/login",
         data
       )
       .then((response) => {
