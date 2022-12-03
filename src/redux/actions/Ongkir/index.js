@@ -31,7 +31,7 @@ export const getOngkirApi = (data) => (dispatch) => {
     }
 
     axios
-      .post("https://backend-kerajaan-keramik.herokuapp.com/api/v1/ongkir", {
+      .post("https://backend-kerajaan-keramik.vercel.app/api/v1/ongkir", {
         cabang,
         tujuan,
         qty,
