@@ -1,4 +1,4 @@
-import { Box ,Button, AlertTitle, Alert } from "@mui/material";
+import { Box ,Button } from "@mui/material";
 import AppBarComp from "../../../../components/AppBar";
 import TableAdmin from "../../../../components/Table/admin/Table";
 import { connect } from "react-redux";
@@ -22,12 +22,6 @@ const HargaAdmin = (props) => {
   return (
     <div>
       <AppBarComp title="kerajaan keramik" />
-        <Alert sx={{
-    m: 2
-    }} severity="error">
-  <AlertTitle>Free dynos are no longer available</AlertTitle>
- As of November 28th, 2022, Heroku started converting all free dynos to Eco and scaling them to 0. To ensure your apps continue to run, upgrade to Eco or another paid plan — <strong>salesforce team</strong>
-</Alert>
       <Box
         sx={{
           display: "flex",
