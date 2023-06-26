@@ -1,4 +1,4 @@
-import { Box ,Button } from "@mui/material";
+import { Box ,Button, Alert } from "@mui/material";
 import AppBarComp from "../../../../components/AppBar";
 import TableAdmin from "../../../../components/Table/admin/Table";
 import { connect } from "react-redux";
@@ -22,6 +22,9 @@ const HargaAdmin = (props) => {
   return (
     <div>
       <AppBarComp title="kerajaan keramik" />
+      <Alert severity="warning" sx={{
+        my: 2
+      }}>Penggunaan server aplikasi ini akan berakhir pada 30 juni 2023, hubungi depelover untuk info lebih lanjut.</Alert>
       <Box
         sx={{
           display: "flex",
@@ -30,6 +33,7 @@ const HargaAdmin = (props) => {
           mt: { xs: 1, md: 3 },
         }}
       >
+        
         <Button variant="contained" onClick={() => navigate("/product")} color="primary">
             <AddIcon /> Produk Baru
         </Button>
